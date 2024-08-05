@@ -35,11 +35,11 @@
 //*****+*+*+*+*+*+*+*+*+*+**************************************************+*+*+*+*+*+*+*+*+*+*****
 //*****+*+*+*+*+*+*+*+*+*+*****************Things to modify*****************+*+*+*+*+*+*+*+*+*+*****
 //*****+*+*+*+*+*+*+*+*+*+**************************************************+*+*+*+*+*+*+*+*+*+*****
-const char* ssid = "{Your network SSID goes between the quotes}"; //********** WiFi SSID **********
-const char* password =  "{Your network password goes between the quotes}"; //********** SSID Password **********
-const char* mqttUser = "{Your MQTT username goes between the quotes}";
-const char* mqttPassword = "{Your MQTT password goes between the quotes}";
-const char* mqtt_server = "{Your MQTT server IP Address goes between the quotes}";
+const char* ssid = "<Your network SSID>"; //********** WiFi SSID **********
+const char* password =  "<Your network password>"; //********** SSID Password **********
+const char* mqttUser = "<Your MQTT username>";
+const char* mqttPassword = "<Your MQTT password>";
+const char* mqtt_server = "<Your MQTT server IP Address>";
 const int mqttPort = 1883;
 const char* mqttClientID = "ESP32Client";
 WiFiClient espClient; //********** This is the name of the specific ESP32 **********
@@ -47,9 +47,9 @@ PubSubClient client(espClient); //********** This is the name of the specific ES
 const char* topicPrefix = "home/livingroom"; // This is specifically for home/room or area name/xxxxx
 const char* topicRoom = "livingroom";
 int delayTime = 59901; // This is adjusted so a cycle happens every 60 seconds(60000 ms)
-IPAddress local_IP({The IP Address of the ESP32 goes between the parenthesis}); // Can be any IP Address that is available and allowed on your network.
-IPAddress gateway({The IP Address of your gateway goes between the parenthesis(Comma seperated)}); // Typically the IP Address of your router/modem.
-IPAddress subnet({The IP Address of your subnet goes between the parenthesis(Comma seperated)}); // Typically 255.255.255.0
+IPAddress local_IP(<IP Address of the ESP32>); // Can be any IP Address that is available and allowed on your network (comma seperated values).
+IPAddress gateway(<IP Address of your gateway>); // Typically the IP Address of your router/modem (comma seperated values).
+IPAddress subnet(<IP Address of your subnet>); // Typically 255,255,255,0 (comma seperated values)
 IPAddress dns1(75,75,75,75); // dns1 and dns2 are needed to get local time.
 IPAddress dns2(75,75,76,76); // dns1 and dns2 are needed to get local time.
 //*****+*+*+*+*+*+*+*+*+*+**************************************************+*+*+*+*+*+*+*+*+*+*****
@@ -838,6 +838,7 @@ void printMqttDisconnected()
   }
 }
 
+// The setup function, start serial, htu temp/humidity sensor, and print the device MAC address.
 void setup()
 {
   Serial.begin(115200);
@@ -845,6 +846,7 @@ void setup()
   printEspInfo();
 }
 
+// The loop function checks WiFi connection, MQTT connection, and calls the temp, humidity, RSSI, some time realated functions, and a loop counter.
 void loop()
 {
   checkingWifi();
@@ -853,7 +855,7 @@ void loop()
   printLoopCounter();
   double f = printTemp();
   double h = printHum();
-  if (!isnan(f) || !isnan(h))
+  if (!isnan(f) || !isnan(h)) // If temp is (not not) a number or the humidity is (not not) a number, call all the functions that take the temp or hum as a parameter.
   {
     avgTemp(f);
     avgHum(h);
