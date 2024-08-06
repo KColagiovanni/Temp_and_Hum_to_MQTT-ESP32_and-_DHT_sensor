@@ -1,11 +1,11 @@
-# ESP32 with DHT Temperature and Humidity DHT Sensor that Broadcasts Data Over MQTT
+# Temperature and Humidity(DHT Sensor) using an ESP32 that Broadcasts Data Over MQTT
 
 ### Description:
 This program was written with the intent to measure temperature and humidity using an Espresif ESP32,
 a DHT Temperature and Humidity sensor, and a power supply set to 3.3V. Alternatively, a Micro USB 
 connector can be used to power the board and sensor. The program sends data to the serial monitor 
-(console output) and an MQTT server using specific topics. In this case the MQTT server is setup on a
-Raspberry Pi or Linux PC.
+(console output) and publishes [MQTT](https://mqtt.org/) messages using specific topics. A Node Red 
+program is subscribed to all the topics that are published and it also sends the messages to Home Assistant.
  
 ### Parts List and Cost:
 - [ESP32 Dev Module - $8.99](https://www.amazon.com/ESP-WROOM-32-Development-Microcontroller-Integrated-Compatible/dp/B07WCG1PLV/ref=sr_1_3?crid=3HPW3GPPHHIM3&dib=eyJ2IjoiMSJ9.sjPHOXDjh8AVtKhUaQxpfTsJ3k4lqRnMvkD37K6ng5VzinwMiIpsjFTshr77euDxMgyoptu8p8PzFvEWpxs40O3qLHpzCyHJ_KpOTdT0hLn_kZ5VvaaUsJZpMZ72DRqNjRW6rqDl4SjGiTwB9vDeKLDCDOqArCW1K2xaXXcrZTOxq8sxeWJr2FTZ0ll8o8OF8eiAo09CJ1BvkJmDdSup5OfI5wz17zlMgYynAIZk2Fs.pMx0hu62hox1BjN9oWdBfO2aGiNb33N04lTTgxFeisA&dib_tag=se&keywords=esp32%2Bdevkit%2Bv1&qid=1722836883&sprefix=esp32%2Bdevkit%2Caps%2C298&sr=8-3&th=1)
@@ -14,14 +14,14 @@ Raspberry Pi or Linux PC.
 
 ### Setup:
 - #### Wiring:
-  - Note: Wiring (Refers to the position on the breadboard(Rows(1-30) and Columns(a-j, +, -))):
+  - Note: *Wiring (Refers to the position on the breadboard(Rows(1-30) and Columns(a-j, +, -)))*:
   - ESP32 pressed into column a and i rows 16-30
-  - DHT pressed into column j rows 10-12
+  - DHT sensor pressed into column j rows 10-12
+  - Jumper wire from f11(DHT('out") to j21(Pin D19 on ESP32)
   - Two Power Options:
     - Power supply pressed into (+) and (-) on both sides, rows 1-5 (If using power supply)
+      - Jumper wire from (+) to j30(Pin 3V3 on the ESP32) (If using power supply)
+      - Jumper wire from (-) to j29(Pin GND on the ESP32) (If using power supply)
+      - Jumper wire from f10(DHT(-)) to (-)
+      - Jumper wire from f12(DHT(+)) to (+)
     - USB AC adapter (Like the one a cell phone uses) and a USB A to micro USB cable
-  - Jumper wire from (+) to j30(Pin 3V3 on the ESP32) (If using power supply)
-  - Jumper wire from (-) to j29(Pin GND on the ESP32) (If using power supply)
-  - Jumper wire from f10(DHT(-)) to (-)
-  - Jumper wire from f11(DHT('out") to j21(Pin D19 on ESP32)
-  - Jumper wire from f12(DHT(+)) to (+)
