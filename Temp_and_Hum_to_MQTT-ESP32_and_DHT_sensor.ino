@@ -6,21 +6,24 @@
  * or Linux PC. 
  * 
  * Parts needed for this program:
- * -Esp32 Dev Module
+ * -ESP32 DevKit V1 Module
  * -DHT11 or DHT22 Temp and Hum Sensor
  * -7-12VDC to 3.3/5V power supply with both jumpers set to "3.3V" or a mirco USB cable with a 1A or higher power adapter.
  * -3 male to male jumper wires
  * -1 mini(400 pin solderless) bread board
  * 
- * Wiring (Refers to the position on the breadboard(Rows(1-30) and Columns(a-j, +, -))):
- * ESP32 pressed into column a and i rows 16-30
- * DHT pressed into column j rows 10-12
- * Power supply pressed into (+) and (-) on both sides, rows 1-5 (If using power supply)
- * Jumper wire from (+) to j30(Pin 3V3 on the ESP32) (If using power supply)
- * Jumper wire from (-) to j29(Pin GND on the ESP32) (If using power supply)
- * Jumper wire from f10(DHT(-)) to (-)
- * Jumper wire from f11(DHT('out") to j21(Pin D19 on ESP32)
- * Jumper wire from f12(DHT(+)) to (+)
+ * Wiring up the project:
+ * Note: The bread board rows are shorted together on the right and left sides. The right and left sides of the bread board are not shorted together.
+ * ESP32 pressed into the bread board.
+ * DHT pressed into the breadboard.
+ * Power supply pressed into the (+) and (-) of the bread board. Note: If the power supply if connected on the "bottom" of the bread board, the polarity marked on the bread board will be incorrect.
+ * If using the power supply to power the project:
+ *   Jumper wire from (+) on the breadboard to the pin labeled VIN on the ESP32.
+ *   Jumper wire from (-) on the breadboard to the pin labeled GND on the ESP32.
+ * If using a USB cable to power the project:
+ *   Jumper wire from the pin labeled 3V3 to "+" on the HTU sensor.
+ *   Jumper wire from the pin lebeled GND to "-" on the HTU sensor.
+ * Jumper wire from the pin labeled D19 on ESP to "Out" on the DHT sensor.
 ***************************************************************************************************/
 
 #include <WiFi.h>
@@ -44,8 +47,8 @@ const int mqttPort = 1883;
 const char* mqttClientID = "ESP32Client";
 WiFiClient espClient; //********** This is the name of the specific ESP32 **********
 PubSubClient client(espClient); //********** This is the name of the specific ESP32 **********
-const char* topicPrefix = "home/livingroom"; // This is specifically for home/room or area name/xxxxx
-const char* topicRoom = "livingroom";
+const char* topicPrefix = "topic1/topic2"; // This is specifically for home/room or area name/xxxxx
+const char* topicRoom = "topic2";
 int delayTime = 59901; // This is adjusted so a cycle happens every 60 seconds(60000 ms)
 IPAddress local_IP(<IP Address of the ESP32>); // Can be any IP Address that is available and allowed on your network (comma seperated values).
 IPAddress gateway(<IP Address of your gateway>); // Typically the IP Address of your router/modem (comma seperated values).
