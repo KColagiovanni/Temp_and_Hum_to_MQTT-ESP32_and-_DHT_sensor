@@ -350,7 +350,7 @@ void printLocalTime()
   Serial.println(timeStamp);
 }
 
-// Reading the temperature from the sensor, in Farenheit.
+// Reading the temperature from the sensor, then returning it in Farenheit.
 double printTemp()
 {
   const char* specificTempTopic = "/temp";
@@ -369,6 +369,7 @@ double printTemp()
     Serial.print("*F\t\t");
     return f;
   }
+  // If temp value from sensor is invalid, return the average temp
   else
   {
     return avgT;
@@ -563,7 +564,7 @@ void calcMinHumToday(double h)
     minHToday = 100;
   }
   minHToday = min(minHToday, h);
-  dtostrf(minHToday, 1, 2, minHumTodayString);// Convert the value to a char array
+dtostrf(minHToday, 1, 2, minHumTodayString);// Convert the value to a char array
   Serial.print("Min Hum Today is: ");
   Serial.print(minHumTodayString);
   Serial.println("%");
