@@ -8,6 +8,12 @@ monitor (console output) and publishes [MQTT](https://mqtt.org/) messages using 
 Node Red program is subscribed to all the topics that are published and it also sends the messages to 
 Home Assistant.
  
+## Requirements
+### Hardware:
+- ESP32 Devkit V1 Module
+- DHT22 Temp and Hum Sensor
+- Electronic Kit
+  
 ### Parts List and Cost:
 - [ESP32 Devkit V1 Module - $8.99](https://www.amazon.com/ESP-WROOM-32-Development-Microcontroller-Integrated-Compatible/dp/B07WCG1PLV/ref=sr_1_3?crid=3HPW3GPPHHIM3&dib=eyJ2IjoiMSJ9.sjPHOXDjh8AVtKhUaQxpfTsJ3k4lqRnMvkD37K6ng5VzinwMiIpsjFTshr77euDxMgyoptu8p8PzFvEWpxs40O3qLHpzCyHJ_KpOTdT0hLn_kZ5VvaaUsJZpMZ72DRqNjRW6rqDl4SjGiTwB9vDeKLDCDOqArCW1K2xaXXcrZTOxq8sxeWJr2FTZ0ll8o8OF8eiAo09CJ1BvkJmDdSup5OfI5wz17zlMgYynAIZk2Fs.pMx0hu62hox1BjN9oWdBfO2aGiNb33N04lTTgxFeisA&dib_tag=se&keywords=esp32%2Bdevkit%2Bv1&qid=1722836883&sprefix=esp32%2Bdevkit%2Caps%2C298&sr=8-3&th=1)
 - [DHT22 Temp and Hum Sensor - $9.99 (Qty 3)](https://www.amazon.com/Teyleten-Robot-Digital-Temperature-Humidity/dp/B0CPHQC9SF/ref=sr_1_4?crid=1BOWMTWB7UA3B&dib=eyJ2IjoiMSJ9.mEk3g57tT-no70-Kzou2lVwZpQj7rqKymONDbJ-DCwRVmLwU5omtXlFrsSRm7Cp7MJ-AxcWkNg1L676lQLn4TuDaFcndInGvDa20QKN9XNePuZ1Th8StltOm9K4cvGeLsVtMJH6_axH6K4rxms-4lqN75bxUWEkjAfaleAeaF8cP5F4Uxs6Kz1G_tBQLDbUB0HqKJW0kKypHXW7qoVNDgHEMzLBadg7-8Io48zxAZIw.EQ_MAqiZl_Do7pjMB4mXcrOeKNcMF4X8x3csphxzMzw&dib_tag=se&keywords=dht22+sensor&qid=1722837153&sprefix=dht22+senso%2Caps%2C153&sr=8-4)
