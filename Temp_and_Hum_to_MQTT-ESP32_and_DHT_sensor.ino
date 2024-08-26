@@ -1,30 +1,6 @@
 /******************************************************************************************************
- * This program was written with the intent to measure temperature and humidity using an Espresif ESP32,
- * a DHT Temperature and Humidity sensor, and a power supply set to 3.3V. Alternatively, a Micro USB 
- * connector can be used to power the board and sensor. The program sends data to the serial monitor 
- * and an MQTT server using specific topics. In this case the MQTT server is setup on a raspberry pi 
- * or Linux PC. 
- * 
- * Parts needed for this program:
- * -ESP32 DevKit V1 Module
- * -DHT11 or DHT22 Temp and Hum Sensor
- * -7-12VDC to 3.3/5V power supply with both jumpers set to "3.3V" or a mirco USB cable with a 1A or higher power adapter.
- * -3 male to male jumper wires
- * -1 mini(400 pin solderless) bread board
- * 
- * Wiring up the project:
- * Note: The bread board rows are shorted together on the right and left sides. The right and left sides of the bread board are not shorted together.
- * ESP32 pressed into the bread board.
- * DHT pressed into the breadboard.
- * Power supply pressed into the (+) and (-) of the bread board. Note: If the power supply if connected on the "bottom" of the bread board, the polarity marked on the bread board will be incorrect.
- * If using the power supply to power the project:
- *   Jumper wire from (+) on the breadboard to the pin labeled VIN on the ESP32.
- *   Jumper wire from (-) on the breadboard to the pin labeled GND on the ESP32.
- * If using a USB cable to power the project:
- *   Jumper wire from the pin labeled 3V3 to "+" on the HTU sensor.
- *   Jumper wire from the pin lebeled GND to "-" on the HTU sensor.
- * Jumper wire from the pin labeled D19 on ESP to "Out" on the DHT sensor.
-***************************************************************************************************/
+ * See the README for instructions describing how to set up and run this project.
+ ***************************************************************************************************/
 
 #include <WiFi.h>
 #include <PubSubClient.h>//For sending data to MQTT Server
