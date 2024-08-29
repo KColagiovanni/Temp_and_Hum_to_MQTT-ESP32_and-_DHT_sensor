@@ -1,6 +1,13 @@
 /******************************************************************************************************
- * See the README for instructions describing how to set up and run this project.
- ***************************************************************************************************/
+* Description:
+* This program was written with the intent to measure temperature and humidity using an Espresif ESP32,
+* a DHT11 or DHT22 Temperature and Humidity sensor, and a power supply set to 3.3V. Alternatively, a 
+* Micro USB connector can be used to power the board and sensor. The program sends data to the serial 
+* monitor (console output) and publishes MQTT messages using specific topics. A Node Red program is 
+* subscribed to all the topics that are published and it also sends the messages to Home Assistant. 
+*
+* See the README for instructions describing how to set up and run this project.
+*****************************************************************************************************/
 
 #include <WiFi.h>
 #include <PubSubClient.h>//For sending data to MQTT Server
